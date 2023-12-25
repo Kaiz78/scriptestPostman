@@ -49,6 +49,7 @@ $testsScenarios = array(
             "host" => array("{{host}}"),
             "path" => array("login")
         ),
+        "isEmail"=> true,
     ),
     array(
         "auth" => array(
@@ -156,7 +157,8 @@ $testsScenarios = array(
             "raw" => "{{host}}/register",
             "host" => array("{{host}}"),
             "path" => array("register")
-        )
+        ),
+        "isEmail"=> true,
     ),
     array(
         "name" => "Test Verify Account",
@@ -181,7 +183,7 @@ $testsScenarios = array(
         "formdata" => array(
             array(
                 "key" => "email",
-                "value" => "test@gmail.com",
+                "value" => "test2@gmail.com",
                 "type" => "text"
             ),
             array(
@@ -211,7 +213,7 @@ $testsScenarios = array(
         "formdata" => array(
             array(
                 "key" => "email",
-                "value" => "test@gmail.com",
+                "value" => "test2@gmail.com",
                 "type" => "text"
             ),
             array(
@@ -233,7 +235,7 @@ $testsScenarios = array(
         "formdata" => array(
             array(
                 "key" => "email",
-                "value" => "test@gmail.com",
+                "value" => "test2@gmail.com",
                 "type" => "text"
             ),
             array(
@@ -269,7 +271,7 @@ $testsScenarios = array(
         "formdata" => array(
             array(
                 "key" => "email",
-                "value" => "test@gmail.com",
+                "value" => "test2@gmail.com",
                 "type" => "text"
             ),
             array(
@@ -283,6 +285,7 @@ $testsScenarios = array(
             "host" => array("{{host}}"),
             "path" => array("login")
         ),
+        "isEmail"=> true,
     ),
     
     // Test de connexion 
@@ -444,8 +447,8 @@ $testsScenarios = array(
         "method" => "post",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "organization_name",
+                "value" => "test_organization",
                 "type" => "text"
             ),
             array(
@@ -489,13 +492,13 @@ $testsScenarios = array(
         "method" => "put",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "organization_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
-                "key" => "lastname",
-                "value" => "jane_doe",
+                "key" => "organization_name",
+                "value" => "test_organization_modification",
                 "type" => "text"
             ),
             array(
@@ -534,8 +537,8 @@ $testsScenarios = array(
         "method" => "delete",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "organization_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
@@ -581,8 +584,8 @@ $testsScenarios = array(
         "method" => "post",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "organization_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
@@ -626,13 +629,13 @@ $testsScenarios = array(
         "method" => "post",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "users_id",
+                "value" => "2",
                 "type" => "text"
             ),
             array(
-                "key" => "lastname",
-                "value" => "jane_doe",
+                "key" => "organization_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
@@ -671,13 +674,13 @@ $testsScenarios = array(
         "method" => "post",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "organization_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
-                "key" => "lastname",
-                "value" => "jane_doe",
+                "key" => "users_id",
+                "value" => "2",
                 "type" => "text"
             ),
             array(
@@ -712,17 +715,62 @@ $testsScenarios = array(
                 )
             ]
         ),      
+        "name" => "Test Access Join Organization blacklistOrganization",
+        "method" => "post",
+        "formdata" => array(
+            array(
+                "key" => "organization_id",
+                "value" => "1",
+                "type" => "text"
+            ),
+            array(
+                "key" => "users_id",
+                "value" => "2",
+                "type" => "text"
+            ),
+            array(
+                "key" => "email",
+                "value" => "janedoe@gmail.com",
+                "type" => "text"
+            ),
+            array(
+                "key" => "password",
+                "value" => "30test",
+                "type" => "text"
+            )
+        ),
+        "url" => array(
+            "raw" => "{{host}}/blacklistOrganization",
+            "host" => array("{{host}}"),
+            "path" => array("blacklistOrganization")
+        )
+    ),
+    array(
+        "auth" => array(
+            "type" => "bearer",
+            "bearer" => [
+                array(
+                    "key" => "token",
+                    "value" => "{{token}}",
+                    "type" => "string"
+                ),
+                array(
+                    "key" => "undefined",
+                    "type"=> "any"
+                )
+            ]
+        ),      
         "name" => "Test Access Join Organization unblacklistOrganization",
         "method" => "post",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "organization_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
-                "key" => "lastname",
-                "value" => "jane_doe",
+                "key" => "users_id",
+                "value" => "2",
                 "type" => "text"
             ),
             array(
@@ -761,8 +809,8 @@ $testsScenarios = array(
         "method" => "post",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "organization_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
@@ -806,13 +854,13 @@ $testsScenarios = array(
         "method" => "post",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "organization_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
-                "key" => "lastname",
-                "value" => "jane_doe",
+                "key" => "users_id",
+                "value" => "2",
                 "type" => "text"
             ),
             array(
@@ -854,8 +902,8 @@ $testsScenarios = array(
         "method" => "get",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "organization_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
@@ -899,8 +947,8 @@ $testsScenarios = array(
         "method" => "get",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "organization_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
@@ -944,8 +992,8 @@ $testsScenarios = array(
         "method" => "get",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "organization_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
@@ -993,13 +1041,13 @@ $testsScenarios = array(
         "method" => "GET",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "organization_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
-                "key" => "lastname",
-                "value" => "jane_doe",
+                "key" => "name",
+                "value" => "test_teams",
                 "type" => "text"
             ),
             array(
@@ -1038,13 +1086,13 @@ $testsScenarios = array(
         "method" => "post",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "organization_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
-                "key" => "lastname",
-                "value" => "jane_doe",
+                "key" => "name",
+                "value" => "test_teams",
                 "type" => "text"
             ),
             array(
@@ -1083,13 +1131,13 @@ $testsScenarios = array(
         "method" => "put",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "teams_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
-                "key" => "lastname",
-                "value" => "jane_doe",
+                "key" => "name",
+                "value" => "test_teams_modification",
                 "type" => "text"
             ),
             array(
@@ -1128,8 +1176,8 @@ $testsScenarios = array(
         "method" => "delete",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "teams_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
@@ -1223,13 +1271,13 @@ $testsScenarios = array(
         "method" => "post",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "teams_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
-                "key" => "lastname",
-                "value" => "jane_doe",
+                "key" => "users_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
@@ -1268,7 +1316,7 @@ $testsScenarios = array(
         "method" => "put",
         "formdata" => array(
             array(
-                "key" => "firstname",
+                "key" => "teams_id",
                 "value" => "jane_doe",
                 "type" => "text"
             ),
@@ -1313,13 +1361,13 @@ $testsScenarios = array(
         "method" => "delete",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "teams_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
-                "key" => "lastname",
-                "value" => "jane_doe",
+                "key" => "users_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
@@ -1408,25 +1456,45 @@ $testsScenarios = array(
         "method" => "post",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "organization_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
-                "key" => "lastname",
-                "value" => "jane_doe",
+                "key" => "name",
+                "value" => "test_project",
                 "type" => "text"
             ),
             array(
-                "key" => "email",
-                "value" => "janedoe@gmail.com",
+                "key" => "description",
+                "value" => "test_project_description",
                 "type" => "text"
             ),
             array(
-                "key" => "password",
+                "key" => "start_date",
                 "value" => "30test",
                 "type" => "text"
-            )
+            ),
+            array(
+                "key" => "end_date",
+                "value" => "30test",
+                "type" => "text"
+            ),
+            array(
+                "key" => "estimated_duration",
+                "value" => "30test",
+                "type" => "text"
+            ),
+            array(
+                "key" => "estimated_cost",
+                "value" => "30test",
+                "type" => "text"
+            ),
+            array(
+                "key" => "status",
+                "value" => "30test",
+                "type" => "text"
+            ),
         ),
         "url" => array(
             "raw" => "{{host}}/projects",
@@ -1453,25 +1521,45 @@ $testsScenarios = array(
         "method" => "put",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "project_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
-                "key" => "lastname",
-                "value" => "jane_doe",
+                "key" => "name",
+                "value" => "test_project",
                 "type" => "text"
             ),
             array(
-                "key" => "email",
-                "value" => "janedoe@gmail.com",
+                "key" => "description",
+                "value" => "test_project_description",
                 "type" => "text"
             ),
             array(
-                "key" => "password",
+                "key" => "start_date",
                 "value" => "30test",
                 "type" => "text"
-            )
+            ),
+            array(
+                "key" => "end_date",
+                "value" => "30test",
+                "type" => "text"
+            ),
+            array(
+                "key" => "estimated_duration",
+                "value" => "30test",
+                "type" => "text"
+            ),
+            array(
+                "key" => "estimated_cost",
+                "value" => "30test",
+                "type" => "text"
+            ),
+            array(
+                "key" => "status",
+                "value" => "30test",
+                "type" => "text"
+            ),
         ),
         "url" => array(
             "raw" => "{{host}}/projects",
@@ -1498,8 +1586,8 @@ $testsScenarios = array(
         "method" => "delete",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "project_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
@@ -1592,23 +1680,23 @@ $testsScenarios = array(
         "method" => "post",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "organization_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
-                "key" => "lastname",
-                "value" => "jane_doe",
+                "key" => "name",
+                "value" => "test_milestone",
                 "type" => "text"
             ),
             array(
-                "key" => "email",
-                "value" => "janedoe@gmail.com",
+                "key" => "description",
+                "value" => "test_milestone_description",
                 "type" => "text"
             ),
             array(
-                "key" => "password",
-                "value" => "30test",
+                "key" => "range",
+                "value" => "1",
                 "type" => "text"
             )
         ),
@@ -1637,23 +1725,23 @@ $testsScenarios = array(
         "method" => "put",
         "formdata" => array(
             array(
-                "key" => "firstname",
+                "key" => "milestone_id",
                 "value" => "jane_doe",
                 "type" => "text"
             ),
             array(
-                "key" => "lastname",
-                "value" => "jane_doe",
+                "key" => "name",
+                "value" => "test_milestone_modification",
                 "type" => "text"
             ),
             array(
-                "key" => "email",
-                "value" => "janedoe@gmail.com",
+                "key" => "description",
+                "value" => "test_description_modification",
                 "type" => "text"
             ),
             array(
-                "key" => "password",
-                "value" => "30test",
+                "key" => "range",
+                "value" => "2",
                 "type" => "text"
             )
         ),
@@ -1682,8 +1770,8 @@ $testsScenarios = array(
         "method" => "delete",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "milestone_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
@@ -1778,25 +1866,50 @@ $testsScenarios = array(
         "method" => "post",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "name",
+                "value" => "test_task",
                 "type" => "text"
             ),
             array(
-                "key" => "lastname",
-                "value" => "jane_doe",
+                "key" => "description",
+                "value" => "test_task_description",
                 "type" => "text"
             ),
             array(
-                "key" => "email",
-                "value" => "janedoe@gmail.com",
+                "key" => "estimated_duration",
+                "value" => "10",
                 "type" => "text"
             ),
             array(
-                "key" => "password",
-                "value" => "30test",
+                "key" => "estimated_cost",
+                "value" => "300",
                 "type" => "text"
-            )
+            ),
+            array(
+                "key" => "start_date",
+                "value" => "300",
+                "type" => "text"
+            ),
+            array(
+                "key" => "end_date",
+                "value" => "300",
+                "type" => "text"
+            ),
+            array(
+                "key" => "image",
+                "value" => "300.png",
+                "type" => "text"
+            ),
+            array(
+                "key" => "status_id",
+                "value" => "3",
+                "type" => "text"
+            ),
+            array(
+                "key" => "organization_id",
+                "value" => "1",
+                "type" => "text"
+            ),
         ),
         "url" => array(
             "raw" => "{{host}}/task",
@@ -1823,25 +1936,55 @@ $testsScenarios = array(
         "method" => "put",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "tasks_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
-                "key" => "lastname",
-                "value" => "jane_doe",
+                "key" => "name",
+                "value" => "test_task_modification",
                 "type" => "text"
             ),
             array(
-                "key" => "email",
-                "value" => "janedoe@gmail.com",
+                "key" => "description",
+                "value" => "test_task_description_modification",
                 "type" => "text"
             ),
             array(
-                "key" => "password",
-                "value" => "30test",
+                "key" => "estimated_duration",
+                "value" => "100",
                 "type" => "text"
-            )
+            ),
+            array(
+                "key" => "estimated_cost",
+                "value" => "3000",
+                "type" => "text"
+            ),
+            array(
+                "key" => "start_date",
+                "value" => "3000",
+                "type" => "text"
+            ),
+            array(
+                "key" => "end_date",
+                "value" => "3000",
+                "type" => "text"
+            ),
+            array(
+                "key" => "image",
+                "value" => "3000.png",
+                "type" => "text"
+            ),
+            array(
+                "key" => "status_id",
+                "value" => "5",
+                "type" => "text"
+            ),
+            array(
+                "key" => "organization_id",
+                "value" => "1",
+                "type" => "text"
+            ),
         ),
         "url" => array(
             "raw" => "{{host}}/task",
@@ -1868,25 +2011,10 @@ $testsScenarios = array(
         "method" => "delete",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "tasks_id",
+                "value" => "1",
                 "type" => "text"
             ),
-            array(
-                "key" => "lastname",
-                "value" => "jane_doe",
-                "type" => "text"
-            ),
-            array(
-                "key" => "email",
-                "value" => "janedoe@gmail.com",
-                "type" => "text"
-            ),
-            array(
-                "key" => "password",
-                "value" => "30test",
-                "type" => "text"
-            )
         ),
         "url" => array(
             "raw" => "{{host}}/task",
@@ -1917,25 +2045,15 @@ $testsScenarios = array(
         "method" => "get",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "tasks_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
-                "key" => "lastname",
-                "value" => "jane_doe",
+                "key" => "comment",
+                "value" => "comment_test",
                 "type" => "text"
             ),
-            array(
-                "key" => "email",
-                "value" => "janedoe@gmail.com",
-                "type" => "text"
-            ),
-            array(
-                "key" => "password",
-                "value" => "30test",
-                "type" => "text"
-            )
         ),
         "url" => array(
             "raw" => "{{host}}/tasksComments/1",
@@ -1962,25 +2080,15 @@ $testsScenarios = array(
         "method" => "post",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "tasks_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
-                "key" => "lastname",
-                "value" => "jane_doe",
+                "key" => "comment",
+                "value" => "comment_test",
                 "type" => "text"
             ),
-            array(
-                "key" => "email",
-                "value" => "janedoe@gmail.com",
-                "type" => "text"
-            ),
-            array(
-                "key" => "password",
-                "value" => "30test",
-                "type" => "text"
-            )
         ),
         "url" => array(
             "raw" => "{{host}}/tasksComments",
@@ -2007,13 +2115,13 @@ $testsScenarios = array(
         "method" => "put",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "tasks_comments_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
-                "key" => "lastname",
-                "value" => "jane_doe",
+                "key" => "comment",
+                "value" => "comment_test_modification",
                 "type" => "text"
             ),
             array(
@@ -2052,8 +2160,8 @@ $testsScenarios = array(
         "method" => "delete",
         "formdata" => array(
             array(
-                "key" => "firstname",
-                "value" => "jane_doe",
+                "key" => "tasks_comments_id",
+                "value" => "1",
                 "type" => "text"
             ),
             array(
@@ -2095,14 +2203,17 @@ foreach($testsScenarios as $keysa => $scenario){
    
     // Si methode PUT ou DELETE on remplace formdata par raw json data
     if(strtolower($scenario["method"]) == "put" || strtolower($scenario["method"]) == "delete"){
+        
         // recuperer le tableau formdata
         $formdata = $scenario["formdata"];
         // on recupere les clés du tableau formdata
         $keys = array_values($formdata);
         unset($scenario["formdata"]);
+       
         $scenario["raw"] = "{\r\n";
         $i = 0;
         $count = count($keys);
+        
         foreach($keys as $key){
             $count--;
             if($count != 0){
@@ -2112,34 +2223,59 @@ foreach($testsScenarios as $keysa => $scenario){
             }
         }
         $scenario["raw"] .= "\r\n}";    
+
+        $testsScenarios[$keysa] = $scenario;
+        
     }
 
     $i = 0;
         
     // On copie chaque scénario pour chaque valeur de test
-    foreach($test_values as $value){
-        $i++;     
-        $test = $scenario;
-        $test["name"] = $scenario["name"] . " - " . $i;
-        if(strtolower($scenario["method"]) == "put" || strtolower($scenario["method"]) == "delete"){
-            // convertir json in array
-            $raw = json_decode($scenario["raw"], true);
-            foreach($raw as $key => $json){
-                $raw[$key] = $value;
-            }
-            // convertir en json
-            $raw = json_encode($raw);
-            $scenario['raw'] = $raw;
-        }else{
-            foreach($test["formdata"] as $key => $formdata){
-                $test["formdata"][$key]["value"] = $value;
-            }
-        }
-        $testsScenarios[] = $test;
-    }
-    // On supprime le tableau par défaut
-    // unset($testsScenarios[$keysa]);
-    
+    // if(isset($scenario["isEmail"])){
+    //     foreach($test_email_values as $value){
+    //         $i++;     
+    //         $test = $scenario;
+    //         $test["name"] = $scenario["name"] . " - " . $i;
+    //         if(strtolower($scenario["method"]) == "put" || strtolower($scenario["method"]) == "delete"){
+    //             // convertir json in array
+    //             $raw = json_decode($scenario["raw"], true);
+    //             foreach($raw as $key => $json){
+    //                 $raw[$key] = $value;
+    //             }
+    //             // convertir en json
+    //             $raw = json_encode($raw);
+    //             $scenario['raw'] = $raw;
+    //         }else{
+    //             foreach($test["formdata"] as $key => $formdata){
+    //                 $test["formdata"][$key]["value"] = $value;
+    //             }
+    //         }
+    //         $testsScenarios[] = $test;
+    //     }
+    // }else{
+    //     foreach($test_values as $value){
+    //         $i++;     
+    //         $test = $scenario;
+    //         $test["name"] = $scenario["name"] . " - " . $i;
+    //         if(strtolower($scenario["method"]) == "put" || strtolower($scenario["method"]) == "delete"){
+    //             // convertir json in array
+    //             $raw = json_decode($scenario["raw"], true);
+    //             foreach($raw as $key => $json){
+    //                 $raw[$key] = $value;
+    //             }
+    //             // convertir en json
+    //             $raw = json_encode($raw);
+    //             $scenario['raw'] = $raw;
+    //         }else{
+    //             foreach($test["formdata"] as $key => $formdata){
+    //                 $test["formdata"][$key]["value"] = $value;
+    //             }
+    //         }
+    //         $testsScenarios[] = $test;
+    //     }
+    //     // On supprime le tableau par défaut
+    //     // unset($testsScenarios[$keysa]);
+    // }
 }
 // var_dump($testsScenarios);die;
 // Créer les tests pour chaque scénario
